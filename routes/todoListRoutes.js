@@ -6,6 +6,8 @@ module.exports = function (app) {
     var userController = require('../controllers/auth');
     var requFamilyController = require('../controllers/requFamily');
     var requController = require('../controllers/requ');
+    var requResController = require('../controllers/requRes');
+    var screenshotController = require('../controllers/screenshot');
 
     //auth
     app.route('/signup').put(userController.signup);
@@ -37,7 +39,31 @@ module.exports = function (app) {
         .get(requController.getByFamily_requ);
     app.route('/updateRequ/:postId')
         .put(requController.update_requ);
-    
 
+
+    //requ result
+    app.route('/requRes')
+        .post(requResController.create_requRes)
+        .get(requResController.getAll_requRes);
+    app.route('/requRes/:postId')  
+        .get(requResController.getOne_requRes);
+    app.route('/deleterequRes/:postId')  
+        .delete(requResController.delete_requRes);
+    app.route('/updaterequRes/:postId')  
+        .put(requResController.update_requRes);
+
+
+    //screenshot
+    app.route('/screenshot')
+        .post(screenshotController.createScreenshot)
+        .get(screenshotController.getAllScreenshot);
+    app.route('/screenshot/:postId')
+        .get(screenshotController.getScreenshot);
+    app.route('/screenshotByRequRes/:postId')
+        .get(screenshotController.getScreenshotByRequRes);
+    app.route('/screenshotUpdate/:postId') 
+        .put(screenshotController.updateScreenshot);
+    app.route('/screenshotDelete/:postId') 
+        .delete(screenshotController.deleteScreenshot);
 }
 

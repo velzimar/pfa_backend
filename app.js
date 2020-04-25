@@ -80,7 +80,7 @@ app.listen(port);
 console.log('todo list RESTful API server started on: ' + port);
 
 //get file
-app.use('/content',express.static('uploads'));
+app.use('/uploads',express.static('uploads'));
 app.use('/',(req,res)=>{
     res.send("I-S 8050")
 });

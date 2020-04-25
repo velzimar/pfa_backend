@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 require('mongoose-type-url');
+
 var requFamilySchema = new Schema({
     family: {
         type: String,
@@ -64,3 +65,35 @@ const requSchema = new Schema({
 });
 
 module.exports = mongoose.model('requ', requSchema);
+
+
+const requResSchema = new Schema({
+    requ_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'requ'
+    },
+    comment: {
+        type: String
+    },
+    pass: {
+        type: Boolean
+    }
+});
+
+module.exports = mongoose.model('requRes', requResSchema);
+
+const screenshotSchema = new Schema({
+    requRes_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'requRes'
+    },
+    title: {
+        type: String
+    },
+    description: {
+        type: String
+    },
+    screenshot: {type: String}
+});
+
+module.exports = mongoose.model('screenshot', screenshotSchema);
