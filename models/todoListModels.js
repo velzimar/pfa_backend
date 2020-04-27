@@ -61,7 +61,13 @@ const requSchema = new Schema({
     rank: {
         type: Number,
         required: true
-    }
+    },
+    level: {
+        type: String,
+        enum : ['L1','L2','R'],
+        default: 'L1',
+        required: true
+    },
 });
 
 module.exports = mongoose.model('requ', requSchema);
@@ -97,3 +103,21 @@ const screenshotSchema = new Schema({
 });
 
 module.exports = mongoose.model('screenshot', screenshotSchema);
+
+const auditSchema = new Schema({
+    user_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    },
+    title:{
+        type: String
+    },
+    level: {
+        type: String,
+        enum : ['L1','L1+R','L2','L2+R'],
+        default: 'L1+R',
+        required: true
+    },
+})
+
+module.exports = mongoose.model('audit', auditSchema);

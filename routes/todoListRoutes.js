@@ -8,6 +8,7 @@ module.exports = function (app) {
     var requController = require('../controllers/requ');
     var requResController = require('../controllers/requRes');
     var screenshotController = require('../controllers/screenshot');
+    var auditController = require('../controllers/audit');
 
     //auth
     app.route('/signup').put(userController.signup);
@@ -37,6 +38,12 @@ module.exports = function (app) {
         .get(requController.getOne_requ);
     app.route('/getRequByFamily/:family')   
         .get(requController.getByFamily_requ);
+    app.route('/get_L1')   
+        .get(requController.get_L1);
+    app.route('/get_L2')   
+        .get(requController.get_L2);
+    app.route('/get_R')   
+        .get(requController.get_R);
     app.route('/updateRequ/:postId')
         .put(requController.update_requ);
 
@@ -65,5 +72,19 @@ module.exports = function (app) {
         .put(screenshotController.updateScreenshot);
     app.route('/screenshotDelete/:postId') 
         .delete(screenshotController.deleteScreenshot);
+
+    //audit
+    app.route('/audit')
+        .post(auditController.create_audit)
+        .get(auditController.getAll_audit);
+    app.route('/audit/:postId') 
+        .get(auditController.getOne_audit);   
+    app.route('/userAudits/:userId') 
+        .get(auditController.getByUser_audit);   
+    app.route('/updateAudit/:postId') 
+        .put(auditController.update_audit);  
+    app.route('/deleteAudit/:postId') 
+        .delete(auditController.delete_audit);  
+
 }
 
