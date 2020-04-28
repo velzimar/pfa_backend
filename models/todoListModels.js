@@ -76,15 +76,25 @@ module.exports = mongoose.model('requ', requSchema);
 const requResSchema = new Schema({
     requ_id: {
         type: Schema.Types.ObjectId,
-        ref: 'requ'
+        ref: 'requ',
+        required: true,
+    },
+    audit_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'audit',
+        required: true
     },
     comment: {
-        type: String
+        type: String,
+        default: ""
     },
     pass: {
-        type: Boolean
+        type: Boolean,
+        default: null
     }
 });
+
+requResSchema.index({ audit_id: 1, requ_id: 1 }, { unique: true });
 
 module.exports = mongoose.model('requRes', requResSchema);
 

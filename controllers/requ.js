@@ -175,7 +175,6 @@ exports.get_L1= function(req, res) {
 
 exports.get_L2= function(req, res) {
   requ.aggregate([  
-    {$match:{ "level": "L2" }},
     {
       "$sort": {
         "rank": 1

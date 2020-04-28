@@ -58,6 +58,8 @@ module.exports = function (app) {
         .delete(requResController.delete_requRes);
     app.route('/updaterequRes/:postId')  
         .put(requResController.update_requRes);
+    app.route('/requResAudit/:postId')  
+        .get(requResController.getByAudit_requRes);
 
 
     //screenshot
