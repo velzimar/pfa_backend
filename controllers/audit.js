@@ -58,11 +58,20 @@ exports.getByUser_audit= function(req, res) {
         
     };
 
-    exports.update_audit= function(req, res) {
+    exports.update_audit_level= function(req, res) {
+        console.log("update")
+        level = req.body.level;
+        audit.updateOne({_id: req.params.postId},{ level:level},function(err, audit) {
+            if (err)
+                res.send(err);
+            res.json(audit);
+        });
+    };
+
+    exports.update_audit_title= function(req, res) {
         console.log("update")
         title = req.body.title;
-        level = req.body.level;
-        audit.updateOne({_id: req.params.postId},{ title: title, level:level},function(err, audit) {
+        audit.updateOne({_id: req.params.postId},{ title: title},function(err, audit) {
             if (err)
                 res.send(err);
             res.json(audit);

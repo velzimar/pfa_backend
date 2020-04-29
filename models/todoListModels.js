@@ -120,7 +120,8 @@ const auditSchema = new Schema({
         ref: 'user'
     },
     title:{
-        type: String
+        type: String,
+        required: true
     },
     level: {
         type: String,

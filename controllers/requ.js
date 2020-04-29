@@ -80,26 +80,6 @@ exports.getAll_requ = function(req, res) {
     });
 };
 
-exports.update_requ= function(req, res) {
-    console.log("workin");
-    //console.log(myURL);
-    //console.log(req.body.procedure);
-    var array  = []
-    req.body.procedure.forEach(element => { 
-        array.push(element=myURL+element);
-      }); 
-    var proc = array;
-    console.log(proc);
-    var d = req.body.description;
-    var r = req.body.rank;
-    var f = req.body.family_id;
-    var level = req.body.level;
-    requ.updateOne({_id: req.params.postId},{description: d, family: f,procedure: proc, rank: r, level: level},function(err, requ) {
-        if (err)
-            res.send(err);
-        res.json(requ);
-    });
-};
     
 exports.getByFamily_requ= function(req, res) {
     requ.aggregate([  
@@ -269,6 +249,73 @@ exports.get_R= function(req, res) {
       }else{
         res.json(requ);
       }            
-  }).sort({ "_id.family_rank": 1});;
+  }).sort({ "_id.family_rank": 1});
   
 };
+
+
+// UPDATE REQUESTS
+
+    // UPDATE PROCEDURE
+exports.update_procedure= function(req, res) {
+  console.log("UPDATE PROCEDURE");
+  //console.log(myURL);
+  //console.log(req.body.procedure);
+  var array  = []
+  req.body.procedure.forEach(element => { 
+      array.push(element=myURL+element);
+    }); 
+  var proc = array;
+  console.log(proc);
+  //var d = req.body.description;
+  //var r = req.body.rank;
+  //var f = req.body.family_id;
+  //var level = req.body.level;
+  requ.updateOne({_id: req.params.postId},{/*description: d, family: f,*/procedure: proc/*, rank: r, level: level*/},function(err, requ) {
+      if (err)
+          res.send(err);
+      res.json(requ);
+  });
+};
+
+    // UPDATE Level
+    exports.update_level= function(req, res) {
+      console.log("UPDATE Level");
+      var level = req.body.level;
+      requ.updateOne({_id: req.params.postId},{level: level},function(err, requ) {
+          if (err)
+              res.send(err);
+          res.json(requ);
+      });
+    };
+
+    // UPDATE Description
+    exports.update_description= function(req, res) {
+      console.log("UPDATE description");
+      var description = req.body.description;
+      requ.updateOne({_id: req.params.postId},{description: description},function(err, requ) {
+          if (err)
+              res.send(err);
+          res.json(requ);
+      });
+    };
+    // UPDATE Rank
+    exports.update_rank= function(req, res) {
+      console.log("UPDATE rank");
+      var rank = req.body.rank;
+      requ.updateOne({_id: req.params.postId},{rank: rank},function(err, requ) {
+          if (err)
+              res.send(err);
+          res.json(requ);
+      });
+    };   
+    // UPDATE Family Id
+    exports.update_family_id= function(req, res) {
+      console.log("UPDATE family_id");
+      var family_id = req.body.family_id;
+      requ.updateOne({_id: req.params.postId},{family_id: family_id},function(err, requ) {
+          if (err)
+              res.send(err);
+          res.json(requ);
+      });
+    };  

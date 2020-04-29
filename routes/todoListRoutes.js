@@ -25,9 +25,12 @@ module.exports = function (app) {
         .get(requFamilyController.getAll_requFamily);
     app.route('/getRequFamily/:postId')
         .get(requFamilyController.getOne_requFamily);
-    app.route('/updateRequFamily/:postId')
-        .put(requFamilyController.update_requFamily);
-
+    app.route('/updateRequFamilyDescription/:postId')
+        .put(requFamilyController.update_requFamily_description);
+    app.route('/updateRequFamilyFamily/:postId')
+        .put(requFamilyController.update_requFamily_family);
+    app.route('/updateRequFamilyRank/:postId')
+        .put(requFamilyController.update_requFamily_rank);        
     
     //requ
     app.route('/addRequ').post(requController.create_requ);
@@ -44,9 +47,16 @@ module.exports = function (app) {
         .get(requController.get_L2);
     app.route('/get_R')   
         .get(requController.get_R);
-    app.route('/updateRequ/:postId')
-        .put(requController.update_requ);
-
+    app.route('/updateProcedure/:postId')
+        .put(requController.update_procedure);
+    app.route('/updateDescription/:postId')
+        .put(requController.update_description);
+    app.route('/updateRank/:postId')
+        .put(requController.update_rank);
+    app.route('/updateFamily/:postId')
+        .put(requController.update_family_id);
+    app.route('/updateLevel/:postId')
+        .put(requController.update_level);
 
     //requ result
     app.route('/requRes')
@@ -56,10 +66,14 @@ module.exports = function (app) {
         .get(requResController.getOne_requRes);
     app.route('/deleterequRes/:postId')  
         .delete(requResController.delete_requRes);
-    app.route('/updaterequRes/:postId')  
-        .put(requResController.update_requRes);
+    app.route('/updaterequResPass/:postId')  
+        .put(requResController.update_requRes_Pass);
+    app.route('/updaterequResComment/:postId')  
+        .put(requResController.update_requRes_Comment);        
     app.route('/requResAudit/:postId')  
         .get(requResController.getByAudit_requRes);
+    app.route('/requResAverageAudit/:postId')  
+        .get(requResController.getByAudit_Average_requRes);
 
 
     //screenshot
@@ -70,8 +84,10 @@ module.exports = function (app) {
         .get(screenshotController.getScreenshot);
     app.route('/screenshotByRequRes/:postId')
         .get(screenshotController.getScreenshotByRequRes);
-    app.route('/screenshotUpdate/:postId') 
-        .put(screenshotController.updateScreenshot);
+    app.route('/screenshotUpdateTitle/:postId') 
+        .put(screenshotController.updateScreenshotTitle);
+    app.route('/screenshotUpdateDescription/:postId') 
+        .put(screenshotController.updateScreenshotDescription);        
     app.route('/screenshotDelete/:postId') 
         .delete(screenshotController.deleteScreenshot);
 
@@ -83,8 +99,10 @@ module.exports = function (app) {
         .get(auditController.getOne_audit);   
     app.route('/userAudits/:userId') 
         .get(auditController.getByUser_audit);   
-    app.route('/updateAudit/:postId') 
-        .put(auditController.update_audit);  
+    app.route('/updateAuditLevel/:postId') 
+        .put(auditController.update_audit_level);    
+    app.route('/updateAuditTitle/:postId') 
+        .put(auditController.update_audit_title);  
     app.route('/deleteAudit/:postId') 
         .delete(auditController.delete_audit);  
 

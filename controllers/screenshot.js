@@ -164,16 +164,7 @@ exports.createScreenshot=function(req, res) {
         });
         }
 
-        exports.updateScreenshot= function(req, res) {
-            console.log("update")
-            title = req.body.title;
-            description = req.body.description;
-            Screenshot.updateOne({_id: req.params.postId},{ title: title, description: description},function(err, Screenshot) {
-                if (err)
-                    res.send(err);
-                res.json(Screenshot);
-            });
-        };
+      
 
 /*
     exports.deleteScreenshot =function(req, res){
@@ -202,3 +193,25 @@ exports.createScreenshot=function(req, res) {
           res.status(500).send(err);
          });
        }
+
+
+       exports.updateScreenshotTitle= function(req, res) {
+        console.log("update screenshot title");
+        title = req.body.title;
+        Screenshot.updateOne({_id: req.params.postId},{ title: title},function(err, Screenshot) {
+            if (err)
+                res.send(err);
+            res.json(Screenshot);
+        });
+    };
+
+    
+    exports.updateScreenshotDescription= function(req, res) {
+        console.log("update screenshot description");
+        description = req.body.description;
+        Screenshot.updateOne({_id: req.params.postId},{ description: description},function(err, Screenshot) {
+            if (err)
+                res.send(err);
+            res.json(Screenshot);
+        });
+    };

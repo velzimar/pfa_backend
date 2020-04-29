@@ -42,16 +42,33 @@ exports.getOne_requFamily= function(req, res) {
     });
 };
 
-exports.update_requFamily= function(req, res) {
-    console.log("update")
+exports.update_requFamily_description= function(req, res) {
+    console.log("update family description")
     des = req.body.description;
-    f = req.body.family;
-    r = req.body.rank;
-    requFamily.updateOne({_id: req.params.postId},{description: des, family: f, rank: r},function(err, requFamily) {
+    requFamily.updateOne({_id: req.params.postId},{description: des},function(err, requFamily) {
         if (err)
             res.send(err);
         res.json(requFamily);
     });
 };
     
+exports.update_requFamily_family= function(req, res) {
+    console.log("update family name")
+    f = req.body.family;
+    requFamily.updateOne({_id: req.params.postId},{family: f},function(err, requFamily) {
+        if (err)
+            res.send(err);
+        res.json(requFamily);
+    });
+};
+
+exports.update_requFamily_rank= function(req, res) {
+    console.log("update family rank")
+    r = req.body.rank;
+    requFamily.updateOne({_id: req.params.postId},{rank: r},function(err, requFamily) {
+        if (err)
+            res.send(err);
+        res.json(requFamily);
+    });
+};
 
