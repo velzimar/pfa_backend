@@ -108,7 +108,8 @@ exports.getByAudit_requRes= function(req, res) {
                       requ_rank: { $arrayElemAt: [ "$requdetail.rank", 0 ] }, 
                       requ_desctiption: { $arrayElemAt: [ "$requdetail.description", 0 ] }, 
                       requ_procedure: { $arrayElemAt: [ "$requdetail.procedure",  0 ] },
-                      requ_pass: "$pass",
+                      requRes_pass: "$pass",
+                      requRes_comment: "$comment"
                     } 
                 },
                 pass: {
@@ -157,17 +158,17 @@ exports.getByAudit_requRes= function(req, res) {
             requ: 1,
             "n/a": 1,
             
-            "pass+fail": 1,
-            "percentage":1,
+            //"pass+fail": 1,
+            //"percentage":1,
             
-            "percentage": {
+            /*"percentage": {
                     "$cond": [
                         { "$eq": [ "$pass", 0 ] },
                         0,
                         { "$divide": [ "$pass", "$pass+fail" ] }
                     ]
-            },     
-            "percentage1": { 
+            },   */  
+            "percentage": { 
               "$concat": [ { "$substr": [ { "$multiply": [
                 {
                   "$cond": [
@@ -244,8 +245,8 @@ exports.getByAudit_Average_requRes= function(req, res) {
                     requ_rank: { $arrayElemAt: [ "$requdetail.rank", 0 ] }, 
                     requ_desctiption: { $arrayElemAt: [ "$requdetail.description", 0 ] }, 
                     requ_procedure: { $arrayElemAt: [ "$requdetail.procedure",  0 ] },
-                    requ_pass: "$pass",
-                    
+                    requRes_pass: "$pass",
+                    requRes_comment: "$comment"
                   } 
             },
               pass: {
