@@ -90,6 +90,8 @@ module.exports = function (app) {
         .put(screenshotController.updateScreenshotDescription);        
     app.route('/screenshotDelete/:postId') 
         .delete(screenshotController.deleteScreenshot);
+    app.route('/screenshotByAudit/:postId') 
+        .get(screenshotController.getScreenshotByAudit);
 
     //audit
     app.route('/audit')
@@ -105,6 +107,8 @@ module.exports = function (app) {
         .put(auditController.update_audit_title);  
     app.route('/deleteAudit/:postId') 
         .delete(auditController.delete_audit);  
+    app.route('/deleteAuditReqRes/:postId') 
+        .delete(auditController.delete_audit_reqres);  
 
 }
 

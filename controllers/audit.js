@@ -86,15 +86,6 @@ exports.getByUser_audit= function(req, res) {
         });
     };
     
-/*
-
-exports.delete_audit= function(req, res) {
-    audit.deleteOne({_id: req.params.postId},function(err, audit) {
-        if (err)
-        res.send(err);
-        res.json("audit successfuly deleted");
-    });
-};
 
  
 exports.getOne_audit= function(req, res) {
@@ -118,4 +109,21 @@ exports.update_audit= function(req, res) {
     });
 };
     
-*/
+requRes = mongoose.model('requRes');
+exports.delete_audit_reqres= function(req, res) {
+    audit.deleteOne({_id: req.params.postId},function(err, audit) {
+        if (err)
+            res.send(err);
+        else{
+                requRes.deleteMany({audit_id: req.params.postId},function(err, requRes) {
+                    if (err)
+                        res.send(err);
+                    else{
+                        res.send("ooooo");
+                    }    
+                });
+            
+            
+        }    
+    });
+};

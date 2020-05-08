@@ -66,7 +66,7 @@ var bodyParser = require('body-parser');
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb+srv://hani037:scar54321@cluster0-3c4x6.mongodb.net/pfa?retryWrites=true&w=majority',
-{ useNewUrlParser: true, useUnifiedTopology: true }); 
+{ useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }); 
 //mongoose.connect('mongodb://127.0.0.1:7000/pfa'); 
 
 app.use(bodyParser.urlencoded({ extended: true }));

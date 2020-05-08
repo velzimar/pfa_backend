@@ -98,21 +98,6 @@ requResSchema.index({ audit_id: 1, requ_id: 1 }, { unique: true });
 
 module.exports = mongoose.model('requRes', requResSchema);
 
-const screenshotSchema = new Schema({
-    requRes_id: {
-        type: Schema.Types.ObjectId,
-        ref: 'requRes'
-    },
-    title: {
-        type: String
-    },
-    description: {
-        type: String
-    },
-    screenshot: {type: String}
-});
-
-module.exports = mongoose.model('screenshot', screenshotSchema);
 
 const auditSchema = new Schema({
     user_id: {
@@ -132,3 +117,23 @@ const auditSchema = new Schema({
 })
 
 module.exports = mongoose.model('audit', auditSchema);
+
+const screenshotSchema = new Schema({
+    audit_id:{
+        type: Schema.Types.ObjectId,
+        ref: 'audit'
+    },
+    requRes_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'requRes'
+    },
+    title: {
+        type: String
+    },
+    description: {
+        type: String
+    },
+    screenshot: {type: String}
+});
+
+module.exports = mongoose.model('screenshot', screenshotSchema);
