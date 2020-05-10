@@ -255,6 +255,8 @@
                 });
             });
     }
+
+    /*
     exports.deleteScreenshot = function destroy(req, res) {
         const {
             id
@@ -277,8 +279,32 @@
             .catch(err => {
                 res.status(500).send(err);
             });
-    }
+    }*/
+    exports.deleteScreenshot = function destroy(req, res) {
+        var fs = require('fs');
+        Screenshot.findById({
+            _id: req.params.postId
+            }, {
+                useFindAndModify: false
+            })
+            .then(screenshot => {
+                console.log(screenshot.screenshot);
+                fs.unlink(screenshot.screenshot, function (err) {
+                    if (err) throw err;
+                    // if no error, file has been deleted successfully
+                    console.log('File deleted!');
+                });
+            })
+            .catch(err => {
+                console.log('File delete problem!');
+            });
+            Screenshot.deleteOne({_id: req.params.postId},function(err, Screenshot) {
+                if (err)
+                res.send(err);
+                res.json("Screenshot successfuly deleted");
+            });  
 
+    }
 
     exports.updateScreenshotTitle = function (req, res) {
         console.log("update screenshot title");
