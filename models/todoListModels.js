@@ -133,7 +133,16 @@ const screenshotSchema = new Schema({
     description: {
         type: String
     },
-    screenshot: {type: String}
+    risk: {
+        type: String
+    },
+    remedation: {
+        type: String
+    },
+    screenshot: {type: String},
+    tools: [{type: String}],
+    systems: [{type: String}],
+    references: [{type: String}],
 });
 
 module.exports = mongoose.model('screenshot', screenshotSchema);
