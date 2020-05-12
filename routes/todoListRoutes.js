@@ -9,6 +9,7 @@ module.exports = function (app) {
     var requResController = require('../controllers/requRes');
     var screenshotController = require('../controllers/screenshot');
     var auditController = require('../controllers/audit');
+    var repController = require('../controllers/rep');
 
     //auth
     app.route('/signup').put(userController.signup);
@@ -112,15 +113,32 @@ module.exports = function (app) {
     app.route('/audit/:postId') 
         .get(auditController.getOne_audit);   
     app.route('/userAudits/:userId') 
-        .get(auditController.getByUser_audit);   
-    app.route('/updateAuditLevel/:postId') 
-        .put(auditController.update_audit_level);    
-    app.route('/updateAuditTitle/:postId') 
-        .put(auditController.update_audit_title);  
+        .get(auditController.getByUser_audit);  
+    app.route('/userAuditsByClient') 
+        .get(auditController.getByUserClient_audit);   
+    app.route('/userAuditsByLevel') 
+        .get(auditController.getByUserLevel_audit);          
+    app.route('/updateAudit/:postId') 
+        .put(auditController.update_audit_any);          
     app.route('/deleteAudit/:postId') 
         .delete(auditController.delete_audit);  
     app.route('/deleteAuditReqRes/:postId') 
         .delete(auditController.delete_audit_reqres);  
+
+    //rep
+    app.route('/rep')
+        .post(repController.create_rep)
+        .get(repController.getAll_rep);
+    app.route('/rep/:postId') 
+        .get(repController.getOne_rep);   
+    app.route('/auditsReps/:postId') 
+        .get(repController.getByAudit_rep);   
+    app.route('/updateRep/:postId') 
+        .put(repController.update_rep_any);          
+    app.route('/deleteRep/:postId') 
+        .delete(repController.delete_rep);  
+    app.route('/deleteAuditRep/:postId') 
+        .delete(repController.delete_by_audit); 
 
 }
 

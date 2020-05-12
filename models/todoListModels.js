@@ -108,12 +108,60 @@ const auditSchema = new Schema({
         type: String,
         required: true
     },
+    //General testing informations
     level: {
         type: String,
         enum : ['L1','L1+R','L2','L2+R'],
         default: 'L1+R',
         required: true
     },
+    MASVS_VERSION: {
+        type: String
+    },
+    ONLINE_MASVS_VERSION: {
+        type: String
+    },
+    MSTG_VERSION: {
+        type: String
+    },
+    ONLINE_MSTG_VERSION: {
+        type: String
+    },
+    Client_Name: {
+        type: String
+    },
+    Test_location: {
+        type: String
+    },
+    Start_Date: {
+        type: String
+    },
+    Closing_Date: {
+        type: String
+    },
+    Name_Of_Tester: {
+        type: String
+    },
+    Testing_Scope: {
+        type: String
+    },
+    //TESTING INFORMATION ANDROID
+    Application_Name: {
+        type: String
+    },
+    Google_PlayStore_Link: {
+        type: String
+    },
+    Filename: {
+        type: String
+    },
+    Version: {
+        type: String
+    },
+    SHA256_HASH_OF_APK: {
+        type: String
+        //can be obtained by using shasum, openssl or sha256sum
+    }
 })
 
 module.exports = mongoose.model('audit', auditSchema);
@@ -146,3 +194,33 @@ const screenshotSchema = new Schema({
 });
 
 module.exports = mongoose.model('screenshot', screenshotSchema);
+
+
+var repSchema = new Schema({
+    email: {
+        type: String,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    title: {
+        type: String,
+        required: true
+    },
+    org: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    audit_id:{
+        type: Schema.Types.ObjectId,
+        ref: 'audit'
+    }
+});
+
+module.exports = mongoose.model('rep', repSchema);
