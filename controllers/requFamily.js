@@ -14,6 +14,15 @@ exports.create_requFamily= function(req, res) {
   });
 };
 
+exports.create_requFamilies= function(req, res) {
+    console.log("workin");
+  //var new_requFamily = new requFamily(req.body);
+  requFamily.insertMany(req.body,function(err, requFamily) {
+    if (err)
+      res.send(err);
+    res.json(requFamily);
+  });
+};
 
 exports.delete_requFamily= function(req, res) {
     requFamily.deleteOne({_id: req.params.postId},function(err, requFamily) {

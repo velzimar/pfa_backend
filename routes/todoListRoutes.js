@@ -21,6 +21,7 @@ module.exports = function (app) {
 
     //requ family
     app.route('/addRequFamily').post(requFamilyController.create_requFamily);
+    app.route('/addRequFamilies').post(requFamilyController.create_requFamilies);
     app.route('/deleteRequFamily/:postId').delete(requFamilyController.delete_requFamily);
     app.route('/getRequFamily/')
         .get(requFamilyController.getAll_requFamily);
@@ -35,6 +36,7 @@ module.exports = function (app) {
     
     //requ
     app.route('/addRequ').post(requController.create_requ);
+    app.route('/addRequs').post(requController.create_requs);
     app.route('/deleteRequ/:postId').delete(requController.delete_requ);
     app.route('/getRequ')
         .get(requController.getAll_requ);
@@ -89,6 +91,8 @@ module.exports = function (app) {
         .delete(screenshotController.deleteScreenshot);
     app.route('/screenshotByAudit/:postId') 
         .get(screenshotController.getScreenshotByAudit);
+    app.route('/screenshotGrouped/:postId') 
+        .get(screenshotController.getScreenshotGroupedByFamiliesAndRequAndRequRes);
         //UPDATING    
         app.route('/screenshotUpdateTitle/:postId') 
             .put(screenshotController.updateScreenshotTitle);

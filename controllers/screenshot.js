@@ -73,7 +73,7 @@
     exports.createScreenshot = async function (req, res) {
         // Display uploaded image for user validation
         //res.send(req.file.path);
-        
+
         let upload = multer({
             storage: storage,
             fileFilter: fileFilter,
@@ -83,18 +83,18 @@
         }).single('screenshot');
         upload(req, res, function (err) {
 
-            var array1  = []
-            req.body.tools.forEach(element => { 
+            var array1 = []
+            req.body.tools.forEach(element => {
                 array1.push(element);
-            }); 
-            var array2  = []
-            req.body.references.forEach(element => { 
+            });
+            var array2 = []
+            req.body.references.forEach(element => {
                 array2.push(element);
-            }); 
-            var array3  = []
-            req.body.systems.forEach(element => { 
+            });
+            var array3 = []
+            req.body.systems.forEach(element => {
                 array3.push(element);
-            }); 
+            });
             console.log(array1);
             console.log(array2);
             console.log(array3);
@@ -210,16 +210,13 @@
 
     exports.getScreenshotByAudit = function (req, res) {
         const fs = require('fs');
-       // const path = require('path');
+        // const path = require('path');
         const id = req.params.postId;
         Screenshot.find({
                 audit_id: id
             })
             .select("title description risk remedation systems tools references _id requRes_id audit_id screenshot")
             .exec()
-           
-
-
             .then(docs => {
                 const response = {
                     count: docs.length,
@@ -247,7 +244,7 @@
                 res.status(200).json(response);
             })
 
-            
+
             .catch(err => {
                 console.log(err);
                 res.status(500).json({
@@ -283,7 +280,7 @@
     exports.deleteScreenshot = function destroy(req, res) {
         var fs = require('fs');
         Screenshot.findById({
-            _id: req.params.postId
+                _id: req.params.postId
             }, {
                 useFindAndModify: false
             })
@@ -298,25 +295,24 @@
             .catch(err => {
                 console.log('File delete problem!');
             });
-            Screenshot.deleteOne({_id: req.params.postId},function(err, Screenshot) {
-                if (err)
+        Screenshot.deleteOne({
+            _id: req.params.postId
+        }, function (err, Screenshot) {
+            if (err)
                 res.send(err);
-                res.json("Screenshot successfuly deleted");
-            });  
+            res.json("Screenshot successfuly deleted");
+        });
 
     }
 
     exports.updateScreenshotTitle = function (req, res) {
         console.log("update screenshot title");
         title = req.body.title;
-        Screenshot.updateOne(
-            {
-                _id: req.params.postId
-            }, 
-            {
-                title: title
-            }
-        , function (err, Screenshot) {
+        Screenshot.updateOne({
+            _id: req.params.postId
+        }, {
+            title: title
+        }, function (err, Screenshot) {
             if (err)
                 res.send(err);
             res.json(Screenshot);
@@ -366,78 +362,69 @@
         });
     };
 
-    exports.updateScreenshotTools= function(req, res) {
+    exports.updateScreenshotTools = function (req, res) {
         console.log("UPDATE tools");
         console.log(tools);
-        var array1  = []
-        req.body.tools.forEach(element => { 
+        var array1 = []
+        req.body.tools.forEach(element => {
             array1.push(element);
-        }); 
-        var tools=array1;
-        Screenshot.updateOne(
-            {
+        });
+        var tools = array1;
+        Screenshot.updateOne({
             _id: req.params.postId
-            }, 
-            {
+        }, {
             tools: tools
-            }
-        , function (err, Screenshot) {
+        }, function (err, Screenshot) {
             if (err)
                 res.send(err);
             res.json(Screenshot);
         });
-      };
+    };
 
-      exports.updateScreenshotSystems= function(req, res) {
+    exports.updateScreenshotSystems = function (req, res) {
         console.log("UPDATE systems");
-        var array  = []
-        req.body.systems.forEach(element => { 
+        var array = []
+        req.body.systems.forEach(element => {
             array.push(element);
-          }); 
+        });
         var proc = array;
         console.log(proc);
-        Screenshot.updateOne(
-            {
+        Screenshot.updateOne({
             _id: req.params.postId
-            }, 
-            {
-                systems: proc
-            }
-        , function (err, Screenshot) {
+        }, {
+            systems: proc
+        }, function (err, Screenshot) {
             if (err)
                 res.send(err);
             res.json(Screenshot);
         });
-      };
+    };
 
-      exports.updateScreenshotReferences= function(req, res) {
+    exports.updateScreenshotReferences = function (req, res) {
         console.log("UPDATE references");
-        var array  = []
-        req.body.references.forEach(element => { 
+        var array = []
+        req.body.references.forEach(element => {
             array.push(element);
-          }); 
+        });
         var proc = array;
         console.log(proc);
-        Screenshot.updateOne(
-            {
+        Screenshot.updateOne({
             _id: req.params.postId
-            }, 
-            {
-                references: proc
-            }
-        , function (err, Screenshot) {
+        }, {
+            references: proc
+        }, function (err, Screenshot) {
             if (err)
                 res.send(err);
             res.json(Screenshot);
         });
-      };
+    };
 
 
-      
-      exports.updateScreenshot= function(req, res) {
+
+    exports.updateScreenshot = function (req, res) {
         var fs = require('fs');
         Screenshot.findById({
-            _id: req.params.postId
+                _id: req.params.postId
             }, {
                 useFindAndModify: false
             })
@@ -462,7 +449,7 @@
             }
         }).single('screenshot');
         upload(req, res, function (err) {
-            
+
             if (req.fileValidationError) {
                 return res.send(req.fileValidationError);
             } else if (!req.file) {
@@ -472,20 +459,124 @@
             } else if (err) {
                 return res.send(err);
             }
-            Screenshot.findOneAndUpdate(
-                {
-                    _id: req.params.postId
-                }, 
-                {
-                    screenshot: req.file.path
-                },{
-                    useFindAndModify: false    
-                }
-            , function (err, Screenshot) {
+            Screenshot.findOneAndUpdate({
+                _id: req.params.postId
+            }, {
+                screenshot: req.file.path
+            }, {
+                useFindAndModify: false
+            }, function (err, Screenshot) {
                 if (err)
                     res.send(err);
                 res.json("file updated");
             });
         });
-      };
-      
+    };
+
+
+
+    exports.getScreenshotGroupedByFamiliesAndRequAndRequRes = function (req, res) {
+        Screenshot.aggregate([{
+                $match: {
+                    "audit_id": ObjectId(req.params.postId)
+                }
+            },
+
+            {
+                $lookup: {
+                    localField: "requRes_id",
+                    from: "requres",
+                    foreignField: "_id",
+                    as: "requresdetail"
+                }
+            },
+            {
+                $lookup: {
+                    localField: "requresdetail.requ_id",
+                    from: "requs",
+                    foreignField: "_id",
+                    as: "requsdetail"
+                }
+            }, {
+                $lookup: {
+                    localField: "requsdetail.family_id",
+                    from: "requfamilies",
+                    foreignField: "_id",
+                    as: "requfamilydetail"
+                }
+            },
+            
+                        {
+                            $group: {
+                                _id: {
+                                    family_id: {
+                                        $arrayElemAt: ['$requfamilydetail.family_id', 0]
+                                    },
+                                    family_name: {
+                                        $arrayElemAt: ['$requfamilydetail.family', 0]
+                                    },
+                                    family_rank: {
+                                        $arrayElemAt: ['$requfamilydetail.rank', 0]
+                                    },
+                                    family_description: {
+                                        $arrayElemAt: ['$requfamilydetail.description', 0]
+                                    },
+                                    requ_id: {
+                                        $arrayElemAt: ['$requsdetail._id', 0]
+                                    },
+                                    requ_description: {
+                                        $arrayElemAt: ['$requsdetail.description', 0]
+                                    },
+                                    requ_rank: {
+                                        $arrayElemAt: ['$requsdetail.rank', 0]
+                                    },
+                                    requ_procedure: 
+                                         '$requsdetail.procedure'
+                                    ,
+                                    requRes_id: {
+                                        $arrayElemAt: ['$requresdetail._id', 0]
+                                    },
+                                    requRes_comment: {
+                                        $arrayElemAt: ['$requresdetail.comment', 0]
+                                    },
+                                    requRes_pass: {
+                                        $arrayElemAt: ['$requresdetail.pass', 0]
+                                    },
+
+                                },
+                                ScreenshotsOfOneRequRes: {
+                                    $push: {
+                                        screenshot_id: "$_id",
+                                        title: "$title",
+                                        description: "$description",
+                                        risk: "$risk",
+                                        remedation: "$remedation",
+                                        tools: "$tools",
+                                        systems: "$systems",
+                                        references: "$references",
+                                        screenshot: "$screenshot"
+                                    }
+                                }
+                            }
+                        },
+                        
+            /*
+               {
+                   $replaceRoot: {
+                       newRoot: {
+                           $let: {
+                               vars: { obj: [ { k: {"$toString":["$_id" ]}, v: "$obj" } ] },
+                               in: { $arrayToObject: "$$obj" }
+                           }
+                       }
+                   }
+               }*/
+        ], function (err, Screenshot) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.json(Screenshot);
+            }
+        }).sort({ "_id.family_rank": 1,"_id.requ_rank": 1});
+
+    };

@@ -48,7 +48,7 @@ var userSchema = new Schema({
 
 module.exports = mongoose.model('user', userSchema);
 
-const requSchema = new Schema({
+var requSchema = new Schema({
     family_id: {
         type: Schema.Types.ObjectId,
         ref: 'requFamily'

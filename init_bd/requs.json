@@ -1,0 +1,736 @@
+[
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04b-Mobile-App-Security-Testing.md#architectural-information",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05h-Testing-Platform-Interaction.md#testing-for-insecure-configuration-of-instant-apps-mstg-arch-1-mstg-arch-7"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "All app components are identified and known to be needed.",
+    "rank": 1,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04h-Testing-Code-Quality.md#injection-flaws-mstg-arch-2-and-mstg-platform-2",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#verifying-that-appropriate-authentication-is-in-place-mstg-arch-2-and-mstg-auth-1"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "Security controls are never enforced only on the client side, but on the respective remote endpoints.",
+    "rank": 2,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04b-Mobile-App-Security-Testing.md#architectural-information"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "A high-level architecture for the mobile app and all connected remote services has been defined and security has been addressed in that architecture.",
+    "rank": 3,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04b-Mobile-App-Security-Testing.md#identifying-sensitive-data"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "Data considered sensitive in the context of the mobile app is clearly identified.",
+    "rank": 4,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04b-Mobile-App-Security-Testing.md#environmental-information"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "All app components are defined in terms of the business functions and/or security functions they provide.",
+    "rank": 5,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04b-Mobile-App-Security-Testing.md#mapping-the-application"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "A threat model for the mobile app and the associated remote services has been produced that identifies potential threats and countermeasures.",
+    "rank": 6,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05h-Testing-Platform-Interaction.md#testing-for-insecure-configuration-of-instant-apps-mstg-arch-1-mstg-arch-7",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04b-Mobile-App-Security-Testing.md#principles-of-testing",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04b-Mobile-App-Security-Testing.md#penetration-testing-aka-pentesting"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "All security controls have a centralized implementation.",
+    "rank": 7,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04g-Testing-Cryptography.md#cryptographic-policy"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "There is an explicit policy for how cryptographic keys (if any) are managed, and the lifecycle of cryptographic keys is enforced. Ideally, follow a key management standard such as NIST SP 800-57.",
+    "rank": 8,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05h-Testing-Platform-Interaction.md#testing-enforced-updating-mstg-arch-9"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "A mechanism for enforcing updates of the mobile app exists.",
+    "rank": 9,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04b-Mobile-App-Security-Testing.md#security-testing-and-the-sdlc"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "Security is addressed within all parts of the software development lifecycle.",
+    "rank": 10,
+    "level": "L2"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "A responsible disclosure policy is in place and effectively applied.",
+    "rank": 11,
+    "level": "L2"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0ad",
+    "description": "The app should comply with privacy laws and regulations.",
+    "rank": 12,
+    "level": "L1"
+  },
+
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05d-Testing-Data-Storage.md#testing-local-storage-for-sensitive-data-mstg-storage-1-and-mstg-storage-2",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05e-Testing-Cryptography.md#testing-key-management-mstg-storage-1-mstg-crypto-1-and-mstg-crypto-5"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "System credential storage facilities need to be used to store sensitive data, such as PII, user credentials or cryptographic keys.",
+    "rank": 1,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05d-Testing-Data-Storage.md#testing-local-storage-for-sensitive-data-mstg-storage-1-and-mstg-storage-2"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "No sensitive data should be stored outside of the app container or system credential storage facilities.",
+    "rank": 2,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05d-Testing-Data-Storage.md#testing-logs-for-sensitive-data-mstg-storage-3"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "No sensitive data is written to application logs.",
+    "rank": 3,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05d-Testing-Data-Storage.md#determining-whether-sensitive-data-is-sent-to-third-parties-mstg-storage-4"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "No sensitive data is shared with third parties unless it is a necessary part of the architecture.",
+    "rank": 4,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05d-Testing-Data-Storage.md#determining-whether-the-keyboard-cache-is-disabled-for-text-input-fields-mstg-storage-5"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "The keyboard cache is disabled on text inputs that process sensitive data.",
+    "rank": 5,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05d-Testing-Data-Storage.md#determining-whether-sensitive-stored-data-has-been-exposed-via-ipc-mechanisms-mstg-storage-6"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "No sensitive data is exposed via IPC mechanisms.",
+    "rank": 6,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05d-Testing-Data-Storage.md#checking-for-sensitive-data-disclosure-through-the-user-interface-mstg-storage-7"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "No sensitive data, such as passwords or pins, is exposed through the user interface.",
+    "rank": 7,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05d-Testing-Data-Storage.md#testing-backups-for-sensitive-data-mstg-storage-8"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "No sensitive data is included in backups generated by the mobile operating system.",
+    "rank": 8,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05d-Testing-Data-Storage.md#finding-sensitive-information-in-auto-generated-screenshots-mstg-storage-9"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "The app removes sensitive data from views when moved to the background.",
+    "rank": 9,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05d-Testing-Data-Storage.md#checking-memory-for-sensitive-data-mstg-storage-10"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "The app does not hold sensitive data in memory longer than necessary, and memory is cleared explicitly after use.",
+    "rank": 10,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05d-Testing-Data-Storage.md#testing-the-device-access-security-policy-mstg-storage-11",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05f-Testing-Local-Authentication.md#testing-confirm-credentials-mstg-auth-1-and-mstg-storage-11"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "The app enforces a minimum device-access-security policy, such as requiring the user to set a device passcode.",
+    "rank": 11,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04i-Testing-user-interaction.md#testing-user-education-mstg-storage-12"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "The app educates the user about the types of personally identifiable information processed, as well as security best practices the user should follow in using the app.",
+    "rank": 12,
+    "level": "L2"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "No sensitive data should be stored locally on the mobile device. Instead, data should be retrieved from a remote endpoint when needed and only be kept in memory.",
+    "rank": 13,
+    "level": "L2"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "If sensitive data is still required to be stored locally, it should be encrypted using a key derived from hardware backed storage which requires authentication.",
+    "rank": 14,
+    "level": "L2"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0ae",
+    "description": "The app\u2019s local storage should be wiped after an excessive number of failed authentication attempts.",
+    "rank": 15,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05e-Testing-Cryptography.md#testing-key-management-mstg-storage-1-mstg-crypto-1-and-mstg-crypto-5",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04g-Testing-Cryptography.md#common-configuration-issues-mstg-crypto-1-mstg-crypto-2-and-mstg-crypto-3"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0af",
+    "description": "The app does not rely on symmetric cryptography with hardcoded keys as a sole method of encryption.",
+    "rank": 1,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04g-Testing-Cryptography.md#common-configuration-issues-mstg-crypto-1-mstg-crypto-2-and-mstg-crypto-3",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05e-Testing-Cryptography.md#testing-the-configuration-of-cryptographic-standard-algorithms-mstg-crypto-2-mstg-crypto-3-and-mstg-crypto-4"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0af",
+    "description": "The app uses proven implementations of cryptographic primitives.",
+    "rank": 2,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05e-Testing-Cryptography.md#testing-the-configuration-of-cryptographic-standard-algorithms-mstg-crypto-2-mstg-crypto-3-and-mstg-crypto-4",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04g-Testing-Cryptography.md#common-configuration-issues-mstg-crypto-1-mstg-crypto-2-and-mstg-crypto-3"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0af",
+    "description": "The app uses cryptographic primitives that are appropriate for the particular use-case, configured with parameters that adhere to industry best practices.",
+    "rank": 3,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04g-Testing-Cryptography.md#identifying-insecure-andor-deprecated-cryptographic-algorithms-mstg-crypto-4",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05e-Testing-Cryptography.md#testing-the-configuration-of-cryptographic-standard-algorithms-mstg-crypto-2-mstg-crypto-3-and-mstg-crypto-4"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0af",
+    "description": "The app does not use cryptographic protocols or algorithms that are widely considered deprecated for security purposes.",
+    "rank": 4,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05e-Testing-Cryptography.md#testing-key-management-mstg-storage-1-mstg-crypto-1-and-mstg-crypto-5"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0af",
+    "description": "The app doesn't re-use the same cryptographic key for multiple purposes.",
+    "rank": 5,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05e-Testing-Cryptography.md#testing-random-number-generation-mstg-crypto-6"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0af",
+    "description": "All random values are generated using a sufficiently secure random number generator.",
+    "rank": 6,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05f-Testing-Local-Authentication.md#testing-confirm-credentials-mstg-auth-1-and-mstg-storage-11",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#verifying-that-appropriate-authentication-is-in-place-mstg-arch-2-and-mstg-auth-1",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#testing-oauth-20-flows-mstg-auth-1-and-mstg-auth-3"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "If the app provides users access to a remote service, some form of authentication, such as username/password authentication, is performed at the remote endpoint.",
+    "rank": 1,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#testing-stateful-session-management-mstg-auth-2"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "If stateful session management is used, the remote endpoint uses randomly generated session identifiers to authenticate client requests without sending the user's credentials.",
+    "rank": 2,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#testing-stateless-token-based-authentication-mstg-auth-3",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#testing-oauth-20-flows-mstg-auth-1-and-mstg-auth-3"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "If stateless token-based authentication is used, the server provides a token that has been signed using a secure algorithm.",
+    "rank": 3,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#testing-user-logout-mstg-auth-4"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "The remote endpoint terminates the existing session when the user logs out.",
+    "rank": 4,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#testing-best-practices-for-passwords-mstg-auth-5-and-mstg-auth-6"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "A password policy exists and is enforced at the remote endpoint.",
+    "rank": 5,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#testing-best-practices-for-passwords-mstg-auth-5-and-mstg-auth-6",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#dynamic-testing-mstg-auth-6"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "The remote endpoint implements a mechanism to protect against the submission of credentials an excessive number of times.",
+    "rank": 6,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#testing-session-timeout-mstg-auth-7"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "Sessions are invalidated at the remote endpoint after a predefined period of inactivity and access tokens expire.",
+    "rank": 7,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05f-Testing-Local-Authentication.md#testing-biometric-authentication-mstg-auth-8"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "Biometric authentication, if any, is not event-bound (i.e. using an API that simply returns \"true\" or \"false\"). Instead, it is based on unlocking the keychain/keystore.",
+    "rank": 8,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#testing-two-factor-authentication-and-step-up-authentication-mstg-auth-9-and-mstg-auth-10"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "A second factor of authentication exists at the remote endpoint and the 2FA requirement is consistently enforced.",
+    "rank": 9,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#testing-two-factor-authentication-and-step-up-authentication-mstg-auth-9-and-mstg-auth-10"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "Sensitive transactions require step-up authentication.",
+    "rank": 10,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04e-Testing-Authentication-and-Session-Management.md#testing-login-activity-and-device-blocking-mstg-auth-11"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "The app informs the user of all sensitive activities with their account. Users are able to view a list of devices, view contextual information (IP address, location, etc.), and to block specific devices.",
+    "rank": 11,
+    "level": "L2"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0b0",
+    "description": "Authorization models should be defined and enforced at the remote endpoint.",
+    "rank": 12,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04f-Testing-Network-Communication.md#verifying-data-encryption-on-the-network-mstg-network-1-and-mstg-network-2"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b1",
+    "description": "Data is encrypted on the network using TLS. The secure channel is used consistently throughout the app.",
+    "rank": 1,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04f-Testing-Network-Communication.md#verifying-data-encryption-on-the-network-mstg-network-1-and-mstg-network-2"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b1",
+    "description": "The TLS settings are in line with current best practices, or as close as possible if the mobile operating system does not support the recommended standards.",
+    "rank": 2,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05g-Testing-Network-Communication.md#testing-endpoint-identify-verification-mstg-network-3"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b1",
+    "description": "The app verifies the X.509 certificate of the remote endpoint when the secure channel is established. Only certificates signed by a trusted CA are accepted.",
+    "rank": 3,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05g-Testing-Network-Communication.md#testing-custom-certificate-stores-and-certificate-pinning-mstg-network-4",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05g-Testing-Network-Communication.md#testing-the-network-security-configuration-settings-mstg-network-4"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b1",
+    "description": "The app either uses its own certificate store, or pins the endpoint certificate or public key, and subsequently does not establish connections with endpoints that offer a different certificate or key, even if signed by a trusted CA.",
+    "rank": 4,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04f-Testing-Network-Communication.md#making-sure-that-critical-operations-use-secure-communication-channels-mstg-network-5"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b1",
+    "description": "The app doesn't rely on a single insecure communication channel (email or SMS) for critical operations, such as enrollments and account recovery.",
+    "rank": 5,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05g-Testing-Network-Communication.md#testing-the-security-provider-mstg-network-6"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b1",
+    "description": "The app only depends on up-to-date connectivity and security libraries.",
+    "rank": 6,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05h-Testing-Platform-Interaction.md#testing-app-permissions-mstg-platform-1"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b2",
+    "description": "The app only requests the minimum set of permissions necessary.",
+    "rank": 1,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04h-Testing-Code-Quality.md#testing-for-injection-flaws-mstg-platform-2",
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04h-Testing-Code-Quality.md#testing-for-fragment-injection-mstg-platform-2"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b2",
+    "description": "All inputs from external sources and the user are validated and if necessary sanitized. This includes data received via the UI, IPC mechanisms such as intents, custom URLs, and network sources.",
+    "rank": 2,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05h-Testing-Platform-Interaction.md#testing-custom-url-schemes-mstg-platform-3"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b2",
+    "description": "The app does not export sensitive functionality via custom URL schemes, unless these mechanisms are properly protected.",
+    "rank": 3,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05h-Testing-Platform-Interaction.md#testing-for-sensitive-functionality-exposure-through-ipc-mstg-platform-4"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b2",
+    "description": "The app does not export sensitive functionality through IPC facilities, unless these mechanisms are properly protected.",
+    "rank": 4,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05h-Testing-Platform-Interaction.md#testing-javascript-execution-in-webviews-mstg-platform-5"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b2",
+    "description": "JavaScript is disabled in WebViews unless explicitly required.",
+    "rank": 5,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05h-Testing-Platform-Interaction.md#testing-webview-protocol-handlers-mstg-platform-6"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b2",
+    "description": "WebViews are configured to allow only the minimum set of protocol handlers required (ideally, only https is supported). Potentially dangerous handlers, such as file, tel and app-id, are disabled.",
+    "rank": 6,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05h-Testing-Platform-Interaction.md#determining-whether-java-objects-are-exposed-through-webviews-mstg-platform-7"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b2",
+    "description": "If native methods of the app are exposed to a WebView, verify that the WebView only renders JavaScript contained within the app package.",
+    "rank": 7,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05h-Testing-Platform-Interaction.md#testing-object-persistence-mstg-platform-8"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b2",
+    "description": "Object deserialization, if any, is implemented using safe serialization APIs.",
+    "rank": 8,
+    "level": "L1"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0b2",
+    "description": "The app protects itself against screen overlay attacks. (Android only)",
+    "rank": 9,
+    "level": "L2"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0b2",
+    "description": "A WebView's cache, storage, and loaded resources (JavaScript, etc.) should be cleared before the WebView is destroyed.",
+    "rank": 10,
+    "level": "L2"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0b2",
+    "description": "Verify that the app prevents usage of custom third-party keyboards whenever sensitive data is entered.",
+    "rank": 11,
+    "level": "L2"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#making-sure-that-the-app-is-properly-signed-mstg-code-1"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b3",
+    "description": "The app is signed and provisioned with a valid certificate, of which the private key is properly protected.",
+    "rank": 1,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-whether-the-app-is-debuggable-mstg-code-2"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b3",
+    "description": "The app has been built in release mode, with settings appropriate for a release build (e.g. non-debuggable).",
+    "rank": 2,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-for-debugging-symbols-mstg-code-3"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b3",
+    "description": "Debugging symbols have been removed from native binaries.",
+    "rank": 3,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-for-debugging-code-and-verbose-error-logging-mstg-code-4"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b3",
+    "description": "Debugging code and developer assistance code (e.g. test code, backdoors, hidden settings) have been removed. The app does not log verbose errors or debugging messages.",
+    "rank": 4,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#checking-for-weaknesses-in-third-party-libraries-mstg-code-5"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b3",
+    "description": "All third party components used by the mobile app, such as libraries and frameworks, are identified, and checked for known vulnerabilities.",
+    "rank": 5,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-exception-handling-mstg-code-6-and-mstg-code-7"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b3",
+    "description": "The app catches and handles possible exceptions.",
+    "rank": 6,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#testing-exception-handling-mstg-code-6-and-mstg-code-7"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b3",
+    "description": "Error handling logic in security controls denies access by default.",
+    "rank": 7,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x04h-Testing-Code-Quality.md#memory-corruption-bugs-mstg-code-8"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b3",
+    "description": "In unmanaged code, memory is allocated, freed and used securely.",
+    "rank": 8,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05i-Testing-Code-Quality-and-Build-Settings.md#make-sure-that-free-security-features-are-activated-mstg-code-9"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b3",
+    "description": "Free security features offered by the toolchain, such as byte-code minification, stack protection, PIE support and automatic reference counting, are activated.",
+    "rank": 9,
+    "level": "L1"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05j-Testing-Resiliency-Against-Reverse-Engineering.md#testing-root-detection-mstg-resilience-1"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "The app detects, and responds to, the presence of a rooted or jailbroken device either by alerting the user or terminating the app.",
+    "rank": 1,
+    "level": "R"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05j-Testing-Resiliency-Against-Reverse-Engineering.md#testing-anti-debugging-detection-mstg-resilience-2"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "The app prevents debugging and/or detects, and responds to, a debugger being attached. All available debugging protocols must be covered.",
+    "rank": 2,
+    "level": "R"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05j-Testing-Resiliency-Against-Reverse-Engineering.md#testing-file-integrity-checks-mstg-resilience-3"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "The app detects, and responds to, tampering with executable files and critical data within its own sandbox.",
+    "rank": 3,
+    "level": "R"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05j-Testing-Resiliency-Against-Reverse-Engineering.md#testing-reverse-engineering-tools-detection-mstg-resilience-4"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "The app detects, and responds to, the presence of widely used reverse engineering tools and frameworks on the device.",
+    "rank": 4,
+    "level": "R"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05j-Testing-Resiliency-Against-Reverse-Engineering.md#testing-emulator-detection-mstg-resilience-5"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "The app detects, and responds to, being run in an emulator.",
+    "rank": 5,
+    "level": "R"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05j-Testing-Resiliency-Against-Reverse-Engineering.md#testing-run-time-integrity-checks-mstg-resilience-6"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "The app detects, and responds to, tampering the code and data in its own memory space.",
+    "rank": 6,
+    "level": "R"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "The app implements multiple mechanisms in each defense category (8.1 to6). Note that resiliency scales with the amount, diversity of the originality of the mechanisms used.",
+    "rank": 7,
+    "level": "R"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "The detection mechanisms trigger responses of different types, including delayed and stealthy responses.",
+    "rank": 8,
+    "level": "R"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05j-Testing-Resiliency-Against-Reverse-Engineering.md#testing-obfuscation-mstg-resilience-9"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "Obfuscation is applied to programmatic defenses, which in turn impede de-obfuscation via dynamic analysis.",
+    "rank": 9,
+    "level": "R"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05j-Testing-Resiliency-Against-Reverse-Engineering.md#testing-device-binding-mstg-resilience-10"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "The app implements a 'device binding' functionality using a device fingerprint derived from multiple properties unique to the device.",
+    "rank": 10,
+    "level": "R"
+  },
+  {
+    "procedure": [
+      "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/0x05j-Testing-Resiliency-Against-Reverse-Engineering.md#testing-obfuscation-mstg-resilience-9"
+    ],
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "All executable files and libraries belonging to the app are either encrypted on the file level and/or important code and data segments inside the executables are encrypted or packed. Trivial static analysis does not reveal important code or data.",
+    "rank": 11,
+    "level": "R"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "If the goal of obfuscation is to protect sensitive computations, an obfuscation scheme is used that is both appropriate for the particular task and robust against manual and automated de-obfuscation methods, considering currently published research. The effectiveness of the obfuscation scheme must be verified through manual testing. Note that hardware-based isolation features are preferred over obfuscation whenever possible.",
+    "rank": 12,
+    "level": "R"
+  },
+  {
+    "family_id": "5ebcd7bca8bd40293c4ec0b4",
+    "description": "As a defense in depth, next to having solid hardening of the communicating parties, application level payload encryption can be applied to further impede eavesdropping.",
+    "rank": 13,
+    "level": "R"
+  }
+]

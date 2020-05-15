@@ -1,0 +1,66 @@
+[
+  {
+    "_id": {
+      "$oid": "5ebcd7bca8bd40293c4ec0ad"
+    },
+    "family": "ARCH",
+    "description": "Architecture design and threat modelling requirements",
+    "rank": 1
+  },
+  {
+    "_id": {
+      "$oid": "5ebcd7bca8bd40293c4ec0ae"
+    },
+    "family": "STORAGE",
+    "description": "Data Storage and Privacy requirements",
+    "rank": 2
+  },
+  {
+    "_id": {
+      "$oid": "5ebcd7bca8bd40293c4ec0af"
+    },
+    "family": "CRYPTO",
+    "description": "Cryptography Verification Requirements",
+    "rank": 3
+  },
+  {
+    "_id": {
+      "$oid": "5ebcd7bca8bd40293c4ec0b0"
+    },
+    "family": "AUTH",
+    "description": "Authentication and Session Management Requirements",
+    "rank": 4
+  },
+  {
+    "_id": {
+      "$oid": "5ebcd7bca8bd40293c4ec0b1"
+    },
+    "family": "NETWORK",
+    "description": "Network communication requirements",
+    "rank": 5
+  },
+  {
+    "_id": {
+      "$oid": "5ebcd7bca8bd40293c4ec0b2"
+    },
+    "family": "PLATFORM",
+    "description": "Interaction with the environment",
+    "rank": 6
+  },
+  {
+    "_id": {
+      "$oid": "5ebcd7bca8bd40293c4ec0b3"
+    },
+    "family": "CODE",
+    "description": "Code quality and build setting requirements",
+    "rank": 7
+  },
+  {
+    "_id": {
+      "$oid": "5ebcd7bca8bd40293c4ec0b4"
+    },
+    "family": "RESILIENCE",
+    "description": "Resiliency Against Reverse Engineering Requirements",
+    "rank": 8
+  }
+]

@@ -7,15 +7,15 @@ const { ObjectId } = require('mongodb');
 const myURL = "https://github.com/OWASP/owasp-mstg/blob/1.1.3/Document/";
 
 exports.create_requ= function(req, res) {
-    console.log("workin");
+    console.log("workinooooooooooooooooo");
     //console.log(myURL);
     //console.log(req.body.procedure);
     var array  = []
     req.body.procedure.forEach(element => { 
-        array.push(element=myURL+element);
+        array.push(element);
       }); 
     var proc = array;
-    console.log(proc);
+    console.log(req.body);
     var d = req.body.description;
     var r = req.body.rank;
     var f = req.body.family_id;
@@ -32,6 +32,16 @@ exports.create_requ= function(req, res) {
       res.send(err);
     res.json(requ);
   });
+};
+
+exports.create_requs= function(req, res) {
+  console.log("workinooooooooooooooooo");
+//var new_requFamily = new requFamily(req.body);
+requ.insertMany(req.body,function(err, requ) {
+  if (err)
+    res.send(err);
+  res.json(requ);
+});
 };
 
 
@@ -148,13 +158,14 @@ exports.get_L1= function(req, res) {
       }else{
         res.json(requ);
       }            
-  }).sort({ "_id.family_rank": 1});;
+  }).sort({ "_id.family_rank": 1});
   
 };
 
 
 exports.get_L2= function(req, res) {
   requ.aggregate([  
+    { $match: { "level": { $in: [ "L1", "L2" ] } } },
     {
       "$sort": {
         "rank": 1
@@ -198,7 +209,7 @@ exports.get_L2= function(req, res) {
       }else{
         res.json(requ);
       }            
-  }).sort({ "_id.family_rank": 1});;
+  }).sort({ "_id.family_rank": 1});
   
 };
 
