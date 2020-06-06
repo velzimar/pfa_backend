@@ -2,17 +2,37 @@
 
 var mongoose = require('mongoose'),
 audit = mongoose.model('audit');
+const level = require('../models/level');
 
 const { ObjectId } = require('mongodb');
 
-exports.create_audit= function(req, res) {
+exports.create_audit= async function(req, res) {
     console.log("workin");
+    const level0 = await level.findOne({name: req.body.level});
+    if (level0){
+        level0.y=level0.y+1;
+        const re= await level0.save();
+    } else {
+        const level1 =new level({
+            name: req.body.level,
+            y:1
+        })
+        const resultat=await level1.save();
+    }
   var new_audit = new audit(req.body);
   new_audit.save(function(err, audit) {
     if (err)
       res.send(err);
     res.json(audit);
   });
+};
+exports.get_levels= function(req, res) {
+    level.find({},function(err, rep) {
+        var count = rep.length;
+        if (err)
+            res.send(err);
+        res.json(rep);
+    });
 };
 
 
@@ -145,7 +165,21 @@ exports.delete_audit_reqres= function(req, res) {
     });
 };
 
-exports.delete_audit= function(req, res) {
+exports.delete_audit= async function(req, res) {
+    audit.findOne({_id: req.params.postId}, async function(err, audit) {
+        const level0 = await level.findOne({name: audit.level});
+        console.log(level0);
+        if (level0){
+            level0.y=level0.y-1;
+            const re= await level0.save();
+        }
+    });
+    const level0 = await level.findOne({name: req.level});
+    console.log(level0);
+    if (level0){
+        level0.y=level0.y-1;
+        const re= await level0.save();
+    }
     audit.deleteOne({_id: req.params.postId},function(err, audit) {
         if (err)
         res.send(err);

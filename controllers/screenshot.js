@@ -277,7 +277,7 @@
                 res.status(500).send(err);
             });
     }*/
-    exports.deleteScreenshot = function destroy(req, res) {
+        exports.deleteScreenshot = function destroy(req, res) {
         var fs = require('fs');
         Screenshot.findById({
                 _id: req.params.postId
@@ -422,6 +422,7 @@
 
 
     exports.updateScreenshot = function (req, res) {
+        console.log("aaa");
         var fs = require('fs');
         Screenshot.findById({
                 _id: req.params.postId
@@ -441,6 +442,7 @@
             });
 
 
+
         let upload = multer({
             storage: storage,
             fileFilter: fileFilter,
@@ -450,6 +452,24 @@
         }).single('screenshot');
         upload(req, res, function (err) {
 
+            var array1 = []
+            req.body.tools.forEach(element => {
+                array1.push(element);
+            });
+            var array2 = []
+            req.body.references.forEach(element => {
+                array2.push(element);
+            });
+            var array3 = []
+            req.body.systems.forEach(element => {
+                array3.push(element);
+            });
+            console.log(array1);
+            console.log(array2);
+            console.log(array3);
+            var tools = array1;
+            var references = array2;
+            var systems = array3;
             if (req.fileValidationError) {
                 return res.send(req.fileValidationError);
             } else if (!req.file) {
@@ -459,10 +479,19 @@
             } else if (err) {
                 return res.send(err);
             }
-            Screenshot.findOneAndUpdate({
+           Screenshot.findOneAndUpdate({
                 _id: req.params.postId
             }, {
-                screenshot: req.file.path
+                screenshot: req.file.path,
+                requRes_id: req.body.requRes_id,
+                title: req.body.title,
+                description: req.body.description,
+                remedation: req.body.remedation,
+                risk: req.body.risk,
+                tools: tools,
+                references: references,
+                systems: systems
+
             }, {
                 useFindAndModify: false
             }, function (err, Screenshot) {

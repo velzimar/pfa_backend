@@ -123,7 +123,7 @@ exports.getByAudit_requRes= function(req, res) {
                     }
                 },
 
-                "n/a": {
+                "n_a": {
                   "$sum": {
                     "$cond": [{ "$eq": [ "$pass", null ]}, 1, 0]
                   }
@@ -156,7 +156,7 @@ exports.getByAudit_requRes= function(req, res) {
             pass: 1,
             fail: 1,
             requ: 1,
-            "n/a": 1,
+            "n_a": 1,
             
             //"pass+fail": 1,
             //"percentage":1,
@@ -260,7 +260,7 @@ exports.getByAudit_Average_requRes= function(req, res) {
                   }
               },
 
-              "n/a": {
+              "n_a": {
                 "$sum": {
                   "$cond": [{ "$eq": [ "$pass", null ]}, 1, 0]
                 }
@@ -293,7 +293,7 @@ exports.getByAudit_Average_requRes= function(req, res) {
           pass: 1,
           fail: 1,
           requ: 1,
-          "n/a": 1,
+          "n_a": 1,
           
           "pass+fail": 1,
           

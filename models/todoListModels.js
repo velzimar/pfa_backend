@@ -20,7 +20,6 @@ var requFamilySchema = new Schema({
 
 module.exports = mongoose.model('requFamily', requFamilySchema);
 
-
 var adminSchema = new Schema({
     email: {
         type: String,
@@ -142,7 +141,7 @@ const auditSchema = new Schema({
     Name_Of_Tester: {
         type: String
     },
-    Testing_Scope: {
+        Testing_Scope: {
         type: String
     },
     //TESTING INFORMATION ANDROID

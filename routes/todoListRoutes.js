@@ -111,6 +111,8 @@ module.exports = function (app) {
         app.route('/screenshotUpdate/:postId') 
             .put(screenshotController.updateScreenshot);                                              
     //audit
+    app.route('/levels')
+        .get(auditController.get_levels);
     app.route('/audit')
         .post(auditController.create_audit)
         .get(auditController.getAll_audit);
@@ -142,7 +144,13 @@ module.exports = function (app) {
     app.route('/deleteRep/:postId') 
         .delete(repController.delete_rep);  
     app.route('/deleteAuditRep/:postId') 
-        .delete(repController.delete_by_audit); 
+        .delete(repController.delete_by_audit);
+    app.use((error, req, res, next) => {
+        const status = error.statusCode || 500;
+        const message = error.message;
+        const data = error.data;
+        res.status(200).json({ message: message, data: data });
+    })
 
 }
 
