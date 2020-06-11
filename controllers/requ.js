@@ -282,7 +282,7 @@ exports.update_procedure= function(req, res) {
   //var r = req.body.rank;
   //var f = req.body.family_id;
   //var level = req.body.level;
-  requ.updateOne({_id: req.params.postId},{/*description: d, family: f,*/procedure: proc/*, rank: r, level: level*/},function(err, requ) {
+  requ.updateOne({_id: req.params.postId},{/*description: d, family: f,*/procedure: req.body.procedure/*, rank: r, level: level*/},function(err, requ) {
       if (err)
           res.send(err);
       res.json(requ);

@@ -423,6 +423,7 @@
 
     exports.updateScreenshot = function (req, res) {
         console.log("aaa");
+        console.log(req.body);
         var fs = require('fs');
         Screenshot.findById({
                 _id: req.params.postId
@@ -502,6 +503,46 @@
         });
     };
 
+    exports.updateScreenshot2 = function (req, res) {
+
+            var array1 = []
+            req.body.tools.forEach(element => {
+                array1.push(element);
+            });
+            var array2 = []
+            req.body.references.forEach(element => {
+                array2.push(element);
+            });
+            var array3 = []
+            req.body.systems.forEach(element => {
+                array3.push(element);
+            });
+            console.log(array1);
+            console.log(array2);
+            console.log(array3);
+            var tools = array1;
+            var references = array2;
+            var systems = array3;
+            Screenshot.findOneAndUpdate({
+                _id: req.params.postId
+            }, {
+                requRes_id: req.body.requRes_id,
+                title: req.body.title,
+                description: req.body.description,
+                remedation: req.body.remedation,
+                risk: req.body.risk,
+                tools: tools,
+                references: references,
+                systems: systems
+
+            }, {
+                useFindAndModify: false
+            }, function (err, Screenshot) {
+                if (err)
+                    res.send(err);
+                res.json("file updated");
+            });
+    };
 
 
     exports.getScreenshotGroupedByFamiliesAndRequAndRequRes = function (req, res) {

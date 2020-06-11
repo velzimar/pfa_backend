@@ -109,7 +109,9 @@ module.exports = function (app) {
         app.route('/screenshotUpdateReferences/:postId') 
             .put(screenshotController.updateScreenshotReferences);
         app.route('/screenshotUpdate/:postId') 
-            .put(screenshotController.updateScreenshot);                                              
+            .put(screenshotController.updateScreenshot);
+        app.route('/screenshotUpdate2/:postId')
+            .put(screenshotController.updateScreenshot2);
     //audit
     app.route('/levels')
         .get(auditController.get_levels);
