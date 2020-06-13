@@ -77,7 +77,8 @@ module.exports = function (app) {
         .get(requResController.getByAudit_requRes);
     app.route('/requResAverageAudit/:postId')  
         .get(requResController.getByAudit_Average_requRes);
-
+    app.route('/requResAuditFail/:postId')  
+        .get(requResController.getByAudit_requRes_fail);
 
     //screenshot
     app.route('/screenshot')
@@ -108,6 +109,8 @@ module.exports = function (app) {
             .put(screenshotController.updateScreenshotSystems);  
         app.route('/screenshotUpdateReferences/:postId') 
             .put(screenshotController.updateScreenshotReferences);
+        app.route('/screenshotUpdateCvss/:postId') 
+            .put(screenshotController.updateScreenshotCvss);
         app.route('/screenshotUpdate/:postId') 
             .put(screenshotController.updateScreenshot);
         app.route('/screenshotUpdate2/:postId')

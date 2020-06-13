@@ -29,7 +29,7 @@
 
     exports.getAllScreenshot = function (req, res) {
         Screenshot.find()
-            .select("title description risk remedation systems tools references _id requRes_id audit_id screenshot")
+            .select("title description risk remedation systems tools cvss references _id requRes_id audit_id screenshot")
             .exec()
             .then(docs => {
                 const response = {
@@ -46,6 +46,7 @@
                             _id: doc._id,
                             requRes_id: doc.requRes_id,
                             audit_id: doc.audit_id,
+                            cvss: doc.cvss,
                             request: {
                                 type: "GET",
                                 url: "http://localhost:8050/screenshot/" + doc._id
@@ -123,7 +124,8 @@
                 audit_id: req.body.audit_id,
                 tools: tools,
                 references: references,
-                systems: systems
+                systems: systems,
+                cvss:req.body.cvss
             });
             new_Screenshot.save();
 
@@ -139,7 +141,7 @@
     exports.getScreenshot = function (req, res) {
         const id = req.params.postId;
         Screenshot.findById(id)
-            .select('title description risk remedation systems tools references _id requRes_id audit_id screenshot')
+            .select('title description risk remedation systems tools cvss references _id requRes_id audit_id screenshot')
             .exec()
             .then(doc => {
                 console.log("From database", doc);
@@ -171,7 +173,7 @@
         Screenshot.find({
                 requRes_id: id
             })
-            .select("title description risk remedation systems tools references _id requRes_id audit_id screenshot")
+            .select("title description risk remedation systems tools cvss references _id requRes_id audit_id screenshot")
             .exec()
             .then(docs => {
                 const response = {
@@ -190,6 +192,7 @@
                             tools: doc.tools,
                             references: doc.references,
                             systems: doc.systems,
+                            cvss:doc.cvss,
                             request: {
                                 type: "GET",
                                 url: "http://localhost:8050/screenshot/" + doc._id
@@ -215,7 +218,7 @@
         Screenshot.find({
                 audit_id: id
             })
-            .select("title description risk remedation systems tools references _id requRes_id audit_id screenshot")
+            .select("title description risk remedation systems cvss tools references _id requRes_id audit_id screenshot")
             .exec()
             .then(docs => {
                 const response = {
@@ -234,6 +237,7 @@
                             tools: doc.tools,
                             references: doc.references,
                             systems: doc.systems,
+                            cvss:doc.cvss,
                             request: {
                                 type: "GET",
                                 url: "http://localhost:8050/screenshot/" + doc._id
@@ -333,7 +337,19 @@
             res.json(Screenshot);
         });
     };
-
+    exports.updateScreenshotCvss = function (req, res) {
+        console.log("update screenshot cvss");
+        cvss = req.body.cvss;
+        Screenshot.updateOne({
+            _id: req.params.postId
+        }, {
+            cvss: cvss
+        }, function (err, Screenshot) {
+            if (err)
+                res.send(err);
+            res.json(Screenshot);
+        });
+    };
     exports.updateScreenshotRemedation = function (req, res) {
         console.log("update screenshot remedation");
         remedation = req.body.remedation;
@@ -491,7 +507,8 @@
                 risk: req.body.risk,
                 tools: tools,
                 references: references,
-                systems: systems
+                systems: systems,
+                cvss:req.body.cvss
 
             }, {
                 useFindAndModify: false
@@ -533,7 +550,8 @@
                 risk: req.body.risk,
                 tools: tools,
                 references: references,
-                systems: systems
+                systems: systems,
+                cvss:req.body.cvss
 
             }, {
                 useFindAndModify: false
@@ -624,7 +642,8 @@
                                         tools: "$tools",
                                         systems: "$systems",
                                         references: "$references",
-                                        screenshot: "$screenshot"
+                                        screenshot: "$screenshot",
+                                        cvss:"$cvss"
                                     }
                                 }
                             }

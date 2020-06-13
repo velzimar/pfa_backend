@@ -115,16 +115,20 @@ const auditSchema = new Schema({
         required: true
     },
     MASVS_VERSION: {
-        type: String
+        type: String,
+        default:    "1.2"
     },
     ONLINE_MASVS_VERSION: {
-        type: String
+        type: String,
+        default:    "https://github.com/OWASP/owasp-masvs/tree/master/Document"
     },
     MSTG_VERSION: {
-        type: String
+        type: String,
+        default:    "1.1.3"
     },
     ONLINE_MSTG_VERSION: {
-        type: String
+        type: String,
+        default:    "https://github.com/OWASP/owasp-mstg/tree/1.1.3/Document"
     },
     Client_Name: {
         type: String
@@ -141,7 +145,7 @@ const auditSchema = new Schema({
     Name_Of_Tester: {
         type: String
     },
-        Testing_Scope: {
+    Testing_Scope: {
         type: String
     },
     //TESTING INFORMATION ANDROID
@@ -190,6 +194,12 @@ const screenshotSchema = new Schema({
     tools: [{type: String}],
     systems: [{type: String}],
     references: [{type: String}],
+    cvss: {
+        type: String,
+        enum : ['High','Medium','Low','Information'],
+        default: 'Medium',
+        required: true
+    },
 });
 
 module.exports = mongoose.model('screenshot', screenshotSchema);
@@ -219,7 +229,8 @@ var repSchema = new Schema({
     audit_id:{
         type: Schema.Types.ObjectId,
         ref: 'audit'
-    }
+    },
+    
 });
 
 module.exports = mongoose.model('rep', repSchema);
