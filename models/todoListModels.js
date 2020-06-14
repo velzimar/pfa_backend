@@ -172,11 +172,13 @@ module.exports = mongoose.model('audit', auditSchema);
 const screenshotSchema = new Schema({
     audit_id:{
         type: Schema.Types.ObjectId,
-        ref: 'audit'
+        ref: 'audit',
+        required: true
     },
     requRes_id: {
         type: Schema.Types.ObjectId,
-        ref: 'requRes'
+        ref: 'requRes',
+        required: true
     },
     title: {
         type: String
@@ -196,8 +198,7 @@ const screenshotSchema = new Schema({
     references: [{type: String}],
     cvss: {
         type: String,
-        enum : ['High','Medium','Low','Information'],
-        required: true
+        enum : ['High','Medium','Low','Information']
     },
 });
 

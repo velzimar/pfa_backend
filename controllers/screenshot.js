@@ -428,7 +428,17 @@
         });
 
     }
+    exports.deleteWithoutScreenshot = function destroy(req, res) {
+        
+        Screenshot.deleteOne({
+            _id: req.params.postId
+        }, function (err, Screenshot) {
+            if (err)
+                res.send(err);
+            res.json("Screenshot successfuly deleted");
+        });
 
+    }
     exports.updateScreenshotTitle = function (req, res) {
         console.log("update screenshot title");
         title = req.body.title;
