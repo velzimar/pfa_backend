@@ -84,16 +84,25 @@ module.exports = function (app) {
     app.route('/screenshot')
         .post(screenshotController.createScreenshot)
         .get(screenshotController.getAllScreenshot);
+        
+    app.route('/noscreenshot')
+    .post(screenshotController.createWithoutScreenshot)
     app.route('/screenshot/:postId')
         .get(screenshotController.getScreenshot);
     app.route('/screenshotByRequRes/:postId')
         .get(screenshotController.getScreenshotByRequRes);   
     app.route('/screenshotDelete/:postId') 
         .delete(screenshotController.deleteScreenshot);
+    app.route('/screenshotDeleteImage/:postId') 
+        .delete(screenshotController.deleteScreenshotImage);
     app.route('/screenshotByAudit/:postId') 
         .get(screenshotController.getScreenshotByAudit);
     app.route('/screenshotGrouped/:postId') 
         .get(screenshotController.getScreenshotGroupedByFamiliesAndRequAndRequRes);
+    app.route('/cvss/:postId') 
+        .get(screenshotController.getScreenshotByAuditGroupByCvss);
+
+        
         //UPDATING    
         app.route('/screenshotUpdateTitle/:postId') 
             .put(screenshotController.updateScreenshotTitle);
@@ -115,6 +124,10 @@ module.exports = function (app) {
             .put(screenshotController.updateScreenshot);
         app.route('/screenshotUpdate2/:postId')
             .put(screenshotController.updateScreenshot2);
+            app.route('/noscreenshotUpdate/:postId')
+                .put(screenshotController.updateNoScreenshot);
+                app.route('/screenshotOnlyImage/:postId') 
+                .put(screenshotController.updateScreenshotImageOnly);
     //audit
     app.route('/levels')
         .get(auditController.get_levels);

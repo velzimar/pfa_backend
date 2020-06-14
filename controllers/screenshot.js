@@ -125,7 +125,7 @@
                 tools: tools,
                 references: references,
                 systems: systems,
-                cvss:req.body.cvss
+                cvss: req.body.cvss
             });
             new_Screenshot.save();
 
@@ -138,6 +138,48 @@
 
     }
 
+    exports.createWithoutScreenshot = function(req, res) {
+
+
+            var array1 = []
+            req.body.tools.forEach(element => {
+                array1.push(element);
+            });
+            var array2 = []
+            req.body.references.forEach(element => {
+                array2.push(element);
+            });
+            var array3 = []
+            req.body.systems.forEach(element => {
+                array3.push(element);
+            });
+            console.log(array1);
+            console.log(array2);
+            console.log(array3);
+            var tools = array1;
+            var references = array2;
+            var systems = array3;
+            
+            const new_Screenshot = new Screenshot({
+                _id: new mongoose.Types.ObjectId(),
+                requRes_id: req.body.requRes_id,
+                title: req.body.title,
+                description: req.body.description,
+                remedation: req.body.remedation,
+                risk: req.body.risk,
+                audit_id: req.body.audit_id,
+                tools: tools,
+                references: references,
+                systems: systems,
+                cvss: req.body.cvss
+            });
+            new_Screenshot.save(function(err, Screenshot) {
+                if (err)
+                  res.send(err);
+                res.json(Screenshot);
+              });
+
+    }
     exports.getScreenshot = function (req, res) {
         const id = req.params.postId;
         Screenshot.findById(id)
@@ -192,7 +234,7 @@
                             tools: doc.tools,
                             references: doc.references,
                             systems: doc.systems,
-                            cvss:doc.cvss,
+                            cvss: doc.cvss,
                             request: {
                                 type: "GET",
                                 url: "http://localhost:8050/screenshot/" + doc._id
@@ -237,7 +279,7 @@
                             tools: doc.tools,
                             references: doc.references,
                             systems: doc.systems,
-                            cvss:doc.cvss,
+                            cvss: doc.cvss,
                             request: {
                                 type: "GET",
                                 url: "http://localhost:8050/screenshot/" + doc._id
@@ -281,7 +323,85 @@
                 res.status(500).send(err);
             });
     }*/
-        exports.deleteScreenshot = function destroy(req, res) {
+
+    exports.deleteScreenshotImage = function (req, res) {
+        
+        var fs = require('fs');
+        Screenshot.findById({
+                _id: req.params.postId
+            }, {
+                useFindAndModify: false
+            })
+            .then(screenshot => {
+                console.log(screenshot.screenshot);
+                fs.unlink(screenshot.screenshot, function (err) {
+                    if (err) throw err;
+                    // if no error, file has been deleted successfully
+                    console.log('File deleted!');
+                });
+            })
+            .catch(err => {
+                console.log('File delete problem!');
+            });
+
+/*
+
+        let upload = multer({
+            storage: storage,
+            fileFilter: fileFilter,
+            limits: {
+                fileSize: 1024 * 1024 * 5
+            }
+        }).single('screenshot');
+        upload(req, res, function (err) {
+
+            if (req.fileValidationError) {
+                return res.send(req.fileValidationError);
+            } else if (!req.file) {
+                return res.send('Please select an image to upload');
+            } else if (err instanceof multer.MulterError) {
+                return res.send(err);
+            } else if (err) {
+                return res.send(err);
+            }*/
+            Screenshot.findOneAndUpdate({
+                _id: req.params.postId
+            }, {
+                screenshot: null,
+               
+
+            }, {
+                useFindAndModify: false
+            }, function (err, Screenshot) {
+                if (err)
+                    res.send(err);
+                res.json("file updated");
+            });
+        //});
+    };/*
+    exports.deleteScreenshotImage = function destroy(req, res) {
+        var fs = require('fs');
+        Screenshot.findById({
+                _id: req.params.postId
+            }, {
+                useFindAndModify: false
+            })
+            .then(screenshot => {
+                console.log(screenshot.screenshot);
+                fs.unlink(screenshot.screenshot, function (err) {
+                    if (err) throw err;
+                    // if no error, file has been deleted successfully
+                    console.log('File deleted!');
+                    res.json("Screenshot Image successfuly deleted");
+                    screenshot.screenshot=null;
+                });
+            })
+            .catch(err => {
+                console.log('File delete problem!');
+            });
+
+    }*/
+    exports.deleteScreenshot = function destroy(req, res) {
         var fs = require('fs');
         Screenshot.findById({
                 _id: req.params.postId
@@ -437,6 +557,61 @@
 
 
 
+    exports.updateScreenshotImageOnly = function (req, res) {
+        console.log("aaa");
+        console.log(req.body);
+        var fs = require('fs');
+        Screenshot.findById({
+                _id: req.params.postId
+            }, {
+                useFindAndModify: false
+            })
+            .then(screenshot => {
+                console.log(screenshot.screenshot);
+                fs.unlink(screenshot.screenshot, function (err) {
+                    if (err) throw err;
+                    // if no error, file has been deleted successfully
+                    console.log('File deleted!');
+                });
+            })
+            .catch(err => {
+                console.log('File delete problem!');
+            });
+
+
+
+        let upload = multer({
+            storage: storage,
+            fileFilter: fileFilter,
+            limits: {
+                fileSize: 1024 * 1024 * 5
+            }
+        }).single('screenshot');
+        upload(req, res, function (err) {
+
+            if (req.fileValidationError) {
+                return res.send(req.fileValidationError);
+            } else if (!req.file) {
+                return res.send('Please select an image to upload');
+            } else if (err instanceof multer.MulterError) {
+                return res.send(err);
+            } else if (err) {
+                return res.send(err);
+            }
+            Screenshot.findOneAndUpdate({
+                _id: req.params.postId
+            }, {
+                screenshot: req.file.path,
+
+            }, {
+                useFindAndModify: false
+            }, function (err, Screenshot) {
+                if (err)
+                    res.send(err);
+                res.json("file updated");
+            });
+        });
+    };
     exports.updateScreenshot = function (req, res) {
         console.log("aaa");
         console.log(req.body);
@@ -496,7 +671,7 @@
             } else if (err) {
                 return res.send(err);
             }
-           Screenshot.findOneAndUpdate({
+            Screenshot.findOneAndUpdate({
                 _id: req.params.postId
             }, {
                 screenshot: req.file.path,
@@ -508,7 +683,7 @@
                 tools: tools,
                 references: references,
                 systems: systems,
-                cvss:req.body.cvss
+                cvss: req.body.cvss
 
             }, {
                 useFindAndModify: false
@@ -519,39 +694,34 @@
             });
         });
     };
+    exports.updateNoScreenshot = function (req, res) {
+        console.log("aaa");
+        console.log(req.body);
+       
 
-    exports.updateScreenshot2 = function (req, res) {
 
-            var array1 = []
-            req.body.tools.forEach(element => {
-                array1.push(element);
-            });
-            var array2 = []
-            req.body.references.forEach(element => {
-                array2.push(element);
-            });
-            var array3 = []
-            req.body.systems.forEach(element => {
-                array3.push(element);
-            });
-            console.log(array1);
-            console.log(array2);
-            console.log(array3);
-            var tools = array1;
-            var references = array2;
-            var systems = array3;
+        let upload = multer({
+            storage: storage,
+            fileFilter: fileFilter,
+            limits: {
+                fileSize: 1024 * 1024 * 5
+            }
+        }).single('screenshot');
+        upload(req, res, function (err) {
+
+            if (req.fileValidationError) {
+                return res.send(req.fileValidationError);
+            } else if (!req.file) {
+                return res.send('Please select an image to upload');
+            } else if (err instanceof multer.MulterError) {
+                return res.send(err);
+            } else if (err) {
+                return res.send(err);
+            }
             Screenshot.findOneAndUpdate({
                 _id: req.params.postId
             }, {
-                requRes_id: req.body.requRes_id,
-                title: req.body.title,
-                description: req.body.description,
-                remedation: req.body.remedation,
-                risk: req.body.risk,
-                tools: tools,
-                references: references,
-                systems: systems,
-                cvss:req.body.cvss
+                screenshot: req.file.path,
 
             }, {
                 useFindAndModify: false
@@ -560,6 +730,48 @@
                     res.send(err);
                 res.json("file updated");
             });
+        });
+    };
+    exports.updateScreenshot2 = function (req, res) {
+
+        var array1 = []
+        req.body.tools.forEach(element => {
+            array1.push(element);
+        });
+        var array2 = []
+        req.body.references.forEach(element => {
+            array2.push(element);
+        });
+        var array3 = []
+        req.body.systems.forEach(element => {
+            array3.push(element);
+        });
+        console.log(array1);
+        console.log(array2);
+        console.log(array3);
+        var tools = array1;
+        var references = array2;
+        var systems = array3;
+        Screenshot.findOneAndUpdate({
+            _id: req.params.postId
+        }, {
+            requRes_id: req.body.requRes_id,
+            title: req.body.title,
+            description: req.body.description,
+            remedation: req.body.remedation,
+            risk: req.body.risk,
+            tools: tools,
+            references: references,
+            systems: systems,
+            cvss: req.body.cvss
+
+        }, {
+            useFindAndModify: false
+        }, function (err, Screenshot) {
+            if (err)
+                res.send(err);
+            res.json("file updated");
+        });
     };
 
 
@@ -593,62 +805,60 @@
                     as: "requfamilydetail"
                 }
             },
-            
-                        {
-                            $group: {
-                                _id: {
-                                    family_id: {
-                                        $arrayElemAt: ['$requfamilydetail.family_id', 0]
-                                    },
-                                    family_name: {
-                                        $arrayElemAt: ['$requfamilydetail.family', 0]
-                                    },
-                                    family_rank: {
-                                        $arrayElemAt: ['$requfamilydetail.rank', 0]
-                                    },
-                                    family_description: {
-                                        $arrayElemAt: ['$requfamilydetail.description', 0]
-                                    },
-                                    requ_id: {
-                                        $arrayElemAt: ['$requsdetail._id', 0]
-                                    },
-                                    requ_description: {
-                                        $arrayElemAt: ['$requsdetail.description', 0]
-                                    },
-                                    requ_rank: {
-                                        $arrayElemAt: ['$requsdetail.rank', 0]
-                                    },
-                                    requ_procedure: 
-                                         '$requsdetail.procedure'
-                                    ,
-                                    requRes_id: {
-                                        $arrayElemAt: ['$requresdetail._id', 0]
-                                    },
-                                    requRes_comment: {
-                                        $arrayElemAt: ['$requresdetail.comment', 0]
-                                    },
-                                    requRes_pass: {
-                                        $arrayElemAt: ['$requresdetail.pass', 0]
-                                    },
 
-                                },
-                                ScreenshotsOfOneRequRes: {
-                                    $push: {
-                                        screenshot_id: "$_id",
-                                        title: "$title",
-                                        description: "$description",
-                                        risk: "$risk",
-                                        remedation: "$remedation",
-                                        tools: "$tools",
-                                        systems: "$systems",
-                                        references: "$references",
-                                        screenshot: "$screenshot",
-                                        cvss:"$cvss"
-                                    }
-                                }
-                            }
+            {
+                $group: {
+                    _id: {
+                        family_id: {
+                            $arrayElemAt: ['$requfamilydetail.family_id', 0]
                         },
-                        
+                        family_name: {
+                            $arrayElemAt: ['$requfamilydetail.family', 0]
+                        },
+                        family_rank: {
+                            $arrayElemAt: ['$requfamilydetail.rank', 0]
+                        },
+                        family_description: {
+                            $arrayElemAt: ['$requfamilydetail.description', 0]
+                        },
+                        requ_id: {
+                            $arrayElemAt: ['$requsdetail._id', 0]
+                        },
+                        requ_description: {
+                            $arrayElemAt: ['$requsdetail.description', 0]
+                        },
+                        requ_rank: {
+                            $arrayElemAt: ['$requsdetail.rank', 0]
+                        },
+                        requ_procedure: '$requsdetail.procedure',
+                        requRes_id: {
+                            $arrayElemAt: ['$requresdetail._id', 0]
+                        },
+                        requRes_comment: {
+                            $arrayElemAt: ['$requresdetail.comment', 0]
+                        },
+                        requRes_pass: {
+                            $arrayElemAt: ['$requresdetail.pass', 0]
+                        },
+
+                    },
+                    ScreenshotsOfOneRequRes: {
+                        $push: {
+                            screenshot_id: "$_id",
+                            title: "$title",
+                            description: "$description",
+                            risk: "$risk",
+                            remedation: "$remedation",
+                            tools: "$tools",
+                            systems: "$systems",
+                            references: "$references",
+                            screenshot: "$screenshot",
+                            cvss: "$cvss"
+                        }
+                    }
+                }
+            },
+
             /*
                {
                    $replaceRoot: {
@@ -666,6 +876,123 @@
             } else {
                 res.json(Screenshot);
             }
-        }).sort({ "_id.family_rank": 1,"_id.requ_rank": 1});
+        }).sort({
+            "_id.family_rank": 1,
+            "_id.requ_rank": 1
+        });
 
     };
+    exports.getScreenshotByAudit = function (req, res) {
+        const fs = require('fs');
+        // const path = require('path');
+        const id = req.params.postId;
+        Screenshot.find({
+                audit_id: id
+            })
+            .select("title description risk remedation systems cvss tools references _id requRes_id audit_id screenshot")
+            .exec()
+            .then(docs => {
+                const response = {
+                    count: docs.length,
+                    Screenshot: docs.map(doc => {
+                        return {
+                            title: doc.title,
+                            description: doc.description,
+                            productImage: doc.productImage,
+                            _id: doc._id,
+                            requRes_id: doc.requRes_id,
+                            audit_id: doc.audit_id,
+                            path: doc.screenshot,
+                            remedation: doc.remedation,
+                            risk: doc.risk,
+                            tools: doc.tools,
+                            references: doc.references,
+                            systems: doc.systems,
+                            cvss: doc.cvss,
+                            request: {
+                                type: "GET",
+                                url: "http://localhost:8050/screenshot/" + doc._id
+                            }
+                        };
+                    })
+                };
+                res.status(200).json(response);
+            })
+
+
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({
+                    error: err
+                });
+            });
+    }
+    exports.getScreenshotByAuditGroupByCvss = function (req, res) {
+            Screenshot.aggregate([{
+                            $match: {
+                                "audit_id": ObjectId(req.params.postId)
+                            }
+                        },
+
+                        {
+                            $group: {
+                                _id: {
+                                    _id: "$audit_id",
+
+                                },
+                                requ: {
+                                    $push: {
+                                        screenshot_id: "$_id",
+                                        cvss: "$cvss",
+                                    }
+                                },
+                                High: {
+                                    "$sum": {
+                                        "$cond": [{
+                                            "$eq": ["$cvss", "High"]
+                                        }, 1, 0]
+                                    }
+                                },
+                                Medium: {
+                                    "$sum": {
+                                        "$cond": [{
+                                            "$eq": ["$cvss", "Medium"]
+                                        }, 1, 0]
+                                    }
+                                },
+                                Information: {
+                                    "$sum": {
+                                        "$cond": [{
+                                            "$eq": ["$cvss", "Information"]
+                                        }, 1, 0]
+                                    }
+                                },
+                                Low: {
+                                    "$sum": {
+                                        "$cond": [{
+                                            "$eq": ["$cvss", "Low"]
+                                        }, 1, 0]
+                                    }
+                                },
+                                Total: { $sum: 1 },
+                                
+                            }
+                        },
+                        {
+                            $project:{
+                                High: 1,
+                                Low: 1,
+                                Information: 1,
+                                Medium: 1,
+                                Total: 1
+                            }
+                        }
+                            ],
+                            function (err, Screenshot) {
+                                if (err) {
+                                    res.send(err);
+                                } else {
+                                    res.json(Screenshot);
+                                }
+                            });
+                    };
