@@ -103,6 +103,9 @@ module.exports = function (app) {
         .get(screenshotController.getScreenshotGroupedByFamiliesAndRequAndRequRes);
     app.route('/cvss/:postId') 
         .get(screenshotController.getScreenshotByAuditGroupByCvss);
+    app.route('/screenshotFailOnly/:postId') 
+        .get(screenshotController.getScreenshotByAuditOnlyFail);
+
 
         
         //UPDATING    

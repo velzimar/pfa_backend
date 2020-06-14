@@ -938,24 +938,33 @@
             });
     }
     exports.getScreenshotByAuditGroupByCvss = function (req, res) {
-            Screenshot.aggregate([{
+            Screenshot.aggregate([
+                        {
                             $match: {
                                 "audit_id": ObjectId(req.params.postId)
                             }
                         },
+                        {
+                            $lookup:{
+                            localField: "requRes_id",
+                            from: "requres",
+                            foreignField: "_id",
+                            as: "requresdetail"
+                            }
+                        },
+                        {
+                            $match: {
+                                "requresdetail.pass": false
+                            }
+                        },
+                        
 
                         {
                             $group: {
                                 _id: {
-                                    _id: "$audit_id",
+                                    audit_id: "$audit_id",
+                                },
 
-                                },
-                                requ: {
-                                    $push: {
-                                        screenshot_id: "$_id",
-                                        cvss: "$cvss",
-                                    }
-                                },
                                 High: {
                                     "$sum": {
                                         "$cond": [{
@@ -1006,3 +1015,72 @@
                                 }
                             });
                     };
+
+
+                    exports.getScreenshotByAuditOnlyFail = function (req, res) {
+                        Screenshot.aggregate([
+                                    {
+                                        $match: {
+                                            "audit_id": ObjectId(req.params.postId)
+                                        }
+                                    },
+                                    {
+                                        $lookup:{
+                                        localField: "requRes_id",
+                                        from: "requres",
+                                        foreignField: "_id",
+                                        as: "requresdetail"
+                                        }
+                                    },
+                                    {
+                                        $lookup:{
+                                        localField: "requresdetail.requ_id",
+                                        from: "requs",
+                                        foreignField: "_id",
+                                        as: "requdetail"
+                                        }
+                                    },
+                                    {
+                                        $lookup:{
+                                        localField: "requdetail.family_id",
+                                        from: "requfamilies",
+                                        foreignField: "_id",
+                                        as: "requfamiliesdetail"
+                                        }
+                                    },
+                                    {
+                                        $match: {
+                                            "requresdetail.pass": false
+                                        }
+                                    },
+                                    
+            
+                                    {
+                                        $group: {
+                                            _id: {
+                                                audit_id: "$audit_id",
+                                                screenshot_id: "$_id",    
+                                                cvss: "$cvss",
+                                                tools:"$tools",
+                                                remedation:"$remedation",
+                                                description:"$description",
+                                                risk:"$risk",
+                                                systems:"$systems",
+                                                references:"$references",
+                                            
+                                                requ_rank: "$requdetail.rank",
+                                                family_name: "$requfamiliesdetail.family",
+                                                family_rank: "$requfamiliesdetail.rank",
+                                            },
+                                        },
+                                    }
+                                        ],
+                                        function (err, Screenshot) {
+                                            if (err) {
+                                                res.send(err);
+                                            } else {
+                                                res.json(Screenshot);
+                                            }
+                                        });
+                                };
+            
