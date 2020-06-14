@@ -196,8 +196,7 @@ const screenshotSchema = new Schema({
     references: [{type: String}],
     cvss: {
         type: String,
-        enum : ['High','Medium','Low','Information'],
-        required: true
+        enum : ['High','Medium','Low','Information']
     },
 });
 
